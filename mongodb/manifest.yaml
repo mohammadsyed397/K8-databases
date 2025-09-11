@@ -23,10 +23,10 @@ kind: Service
 metadata:
   name: mongodb-service
   namespace: roboshop
-labels:
-   project: roboshop
-   component: mongodb
-   tier: database
+  labels:
+    project: roboshop
+    component: mongodb
+    tier: database
 spec:
   selector: 
     project: roboshop
