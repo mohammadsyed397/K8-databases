@@ -12,7 +12,7 @@ data:
 
 ---
 apiVersion: v1 
-kind: service
+kind: Service
 metadata:  
   name: mysql-service-headless
   namespace: roboshop
