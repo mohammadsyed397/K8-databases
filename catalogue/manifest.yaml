@@ -73,7 +73,7 @@ metadata:
   name: catalogue
   namespace: roboshop
 spec:
-selectTragetRef:
+selectTargetRef:
   apiversion: v1 
   kind: Deployment
   name: catalogue
