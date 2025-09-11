@@ -66,6 +66,7 @@ spec:
       project: roboshop
       tier: database
   serviceName: mysql-service-headless
+  replicas: 2
   template:
     metadata: 
       name: mysql
