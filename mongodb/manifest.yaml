@@ -3,7 +3,7 @@ kind: Service
 metadata: 
  name: mongodb-svc-headless
  namespace: roboshop
-labels:
+ labels:
   project: roboshop
   component: mongodb
   tier: database
@@ -37,7 +37,7 @@ spec:
     port: 27017
     targetPort: 27017
 ---
-apiVersion: v1 
+apiVersion: apps/v1 
 kind: StatefulSet 
 metadata: 
   name: mongodb-state
