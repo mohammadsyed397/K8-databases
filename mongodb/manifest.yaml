@@ -37,39 +37,40 @@ spec:
     port: 27017
     targetPort: 27017
 ---
-apiVersion: apps/v1 
-kind: StatefulSet 
-metadata: 
-  name: mongodb-state
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mongodb
   namespace: roboshop
-  labels:  
-    project: roboshop
+  labels:
     component: mongodb
+    project: roboshop
     tier: database
-spec: 
+spec:
   selector:
-    matchLabels: 
-      project: roboshop
+    matchLabels:
       component: mongodb
-      tier: database
-  serviceName: mongodb-svc-headless
-  replicas: 3
-  template: 
-    metadata: 
-      labels: 
-        project: roboshop
+      project: roboshop
+      tier: database # has to match .spec.template.metadata.labels
+  serviceName: "mongodb-headless" # this should be headless service
+  replicas: 3 # by default is 1
+  template:
+    metadata:
+      labels:
         component: mongodb
+        project: roboshop
         tier: database
-  spec: 
-    containers: 
+    spec:
+      containers:
       - name: mongodb
-        image: mohammadmunna1234/mongodb:v1
-        volumeMounts: 
-          - name: mongodb-data
-            mountPath: /db/data
-volumeClaimTemplates: 
+        image: joindevops/mongodb:v1
+        volumeMounts:
+        - name: mongodb-data
+          mountPath: /data/db
+  # This is nothing but PVC, you can directly create here
+  volumeClaimTemplates:
   - metadata:
-      name: mongodb-pvc
+      name: mongodb-data
     spec:
       accessModes: [ "ReadWriteOnce" ]
       storageClassName: "roboshop-ebs"
