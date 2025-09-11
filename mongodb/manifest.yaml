@@ -8,7 +8,7 @@ metadata:
   component: mongodb
   tier: database
 spec:
-  clusterIP: none
+  clusterIP: None
   selector:
     project: roboshop
     component: mongodb
@@ -67,11 +67,11 @@ spec:
         volumeMounts: 
           - name: mongodb-data
             mountPath: /db/data
-  volumeClaimTemplates: 
-    - metadata:
-         name: mongodb-pvc
-      spec:
-        accessModes: [ "ReadWriteOnce" ]
+volumeClaimTemplates: 
+  - metadata:
+      name: mongodb-pvc
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
       storageClassName: "roboshop-ebs"
       resources:
         requests:
