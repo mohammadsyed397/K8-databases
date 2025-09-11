@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata: 
  name: mongodb-svc-headless
- nameSpace: roboshop
+ namespace: roboshop
 labels:
   project: roboshop
   component: mongodb
@@ -44,7 +44,7 @@ metadata:
   namespace: roboshop
   labels:  
     project: roboshop
-    componet: mongodb
+    component: mongodb
     tier: database
 spec: 
   selector:
@@ -54,7 +54,7 @@ spec:
       tier: database
   serviceName: mongodb-svc-headless
   replicas: 3
-  templates: 
+  template: 
     metadata: 
       labels: 
         project: roboshop
@@ -71,7 +71,7 @@ spec:
     - metadata:
          name: mongodb-pvc
       spec:
-        ccessModes: [ "ReadWriteOnce" ]
+        accessModes: [ "ReadWriteOnce" ]
       storageClassName: "roboshop-ebs"
       resources:
         requests:
